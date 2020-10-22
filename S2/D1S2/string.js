@@ -68,7 +68,7 @@ const correos = listaDeCorreos.split(",");
 console.log(correos);
 
 // includes
-const oracion = "Padre Nuestro Que Estas En Los Cielos, Que";
+const oracion = "padre nuestro que estas en los cielos, que";
 const include = oracion.includes("a"); // return boolenan true | false
 console.log(include);
 // match
@@ -88,8 +88,28 @@ console.log(oracion.toLocaleLowerCase());
 // toUpperCase
 console.log(oracion.toUpperCase());
 
-oracion.replace(""); // (new word, old word)
+oracion.replace(); // (new word, old word)
 
 // ejercicio
 // poner mayuscula solo la primera letra de cada palabra
-// 
+//
+
+let toWordToCapital = (sentence) => {
+  let newSentence = "";
+  sentence.split(" ").forEach((word) => {
+    newSentence += word.replace(word[0], word[0].toUpperCase()) + " ";
+  });
+  return newSentence;
+};
+
+/*
+let toWordToCapital = (sentence) => {
+  return sentence
+    .split(" ")
+    .map((word) => {
+      return word.replace(word[0], word[0].toUpperCase()) + " ";
+    })
+    .toString();
+};*/
+
+console.log(toWordToCapital(oracion));
