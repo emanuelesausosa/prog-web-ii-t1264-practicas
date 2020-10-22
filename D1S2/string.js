@@ -68,7 +68,7 @@ const correos = listaDeCorreos.split(",");
 console.log(correos);
 
 // includes
-const oracion = "Padre nuestro que estas en los cielos, que";
+const oracion = "Padre Nuestro Que Estas En Los Cielos, Que";
 const include = oracion.includes("a"); // return boolenan true | false
 console.log(include);
 // match
