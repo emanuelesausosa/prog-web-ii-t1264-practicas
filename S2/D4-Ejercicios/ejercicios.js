@@ -95,11 +95,8 @@ let grouping = function (arr, types) {
         let whichNumber = Number.parseFloat(element);
         if (Number.isNaN(whichNumber)) {
           // could be a sign
-          if (element === "+") {
-            temp.push("-");
-          } else {
-            temp.push("+");
-          }
+          if (element === "+") temp.push("-");
+          if (element === "-") temp.push("+");
         } else {
           temp.push(whichNumber.toString());
         }
