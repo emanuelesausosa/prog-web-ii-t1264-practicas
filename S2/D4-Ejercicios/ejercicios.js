@@ -49,9 +49,123 @@
 // $ -> estrictamente debe finalizar con un valor
 /*
   const pattern = /(?<ax>[0-9]*x)(?<operador>[\+|-])(?<b>[0-9]+)(?<igual>=)(?<c>[0-9]+)$/m;
+  (?<ax>[0-9]*x)|(?<axn>[0-9]*x)|(?<operador>[\+|-])|(?<b>[0-9]+)(?<igual>=)(?<c>[0-9]+)$
   const string = "3x+6=0";
   const arrayResult = Array.from(string.match(pattern));
 
   // arrayResult = [ '3x+6=0', '3x', '+', '6', '=', '0' ]
 */
 
+let solveEquationsFirstDegree = (equationSchema) => {
+  const pattern = /(?<ax>[0-9]*x)(?<operador>[\+|-])(?<b>[0-9]+)(?<igual>=)(?<c>[0-9]+)$/m;
+  const arrayExtracted = Array.from(equationSchema.match(pattern));
+
+  console.log("Solving: ", arrayExtracted[0]);
+  const steps = arrayExtracted.slice(1, arrayExtracted.length);
+
+  let leftSide = []; // all members before =
+  let rightSide = []; // members after equals
+
+  // grouping -> put all elemens that there aren't a variable in the  rigth side (invert sign)
+  leftSide = grouping(steps, "variables");
+  rightSide = grouping(steps, "constants");
+
+  // operate
+  leftSide = operate(leftSide);
+  rightSide = operate(rightSide);
+
+  // clear
+  return clearEquationToX(leftSide, rightSide);
+};
+
+let grouping = function (arr, types) {
+  let result = [];
+  let leftSideToEvaluate = [];
+  let equealsIndex = arr.indexOf("=");
+  // left side to evaluate
+  leftSideToEvaluate = arr.slice(0, equealsIndex);
+
+  if (types === "constants") {
+    // put first elements to right side if there are constants
+    let temp = arr.slice(equealsIndex + 1, arr.length);
+
+    leftSideToEvaluate.forEach((element) => {
+      if (!element.includes("x")) {
+        // test if is a number
+        let whichNumber = Number.parseFloat(element);
+        if (Number.isNaN(whichNumber)) {
+          // could be a sign
+          if (element === "+") {
+            temp.push("-");
+          } else {
+            temp.push("+");
+          }
+        } else {
+          temp.push(whichNumber.toString());
+        }
+      }
+    });
+    //result = operate(temp);
+    result = temp;
+  }
+
+  if (types === "variables") {
+    let prepareToOperate = [];
+    leftSideToEvaluate.forEach((element) => {
+      if (
+        element.includes("x") ||
+        element.includes("+") ||
+        element.includes("-")
+      ) {
+        // prepare to evaluate and group
+        prepareToOperate.push(element);
+      }
+    });
+
+    // result = operate(prepareToOperate);
+    // result = result + "x";
+    result = prepareToOperate;
+  }
+  return result;
+};
+
+let operate = (arrayToOperate) => {
+  if (arrayToOperate.length == 1) return arrayToOperate[0];
+  let result = 0;
+  let operation = arrayToOperate.slice(0, 3);
+  let nextEvaluation = arrayToOperate.slice(3, arrayToOperate.length);
+
+  let leftSide = extractNumber(operation[0]);
+  let operator = operation[1];
+  let rightSide = extractNumber(operation[2] ? operation[2] : "0");
+
+  if (operator === "+") result = leftSide + rightSide;
+  if (operator === "-") result = leftSide - rightSide;
+
+  nextEvaluation.unshift(result.toString());
+  return operate(nextEvaluation);
+};
+
+let extractNumber = (varExpression) => {
+  let number = 0;
+  if (varExpression === "x") return 1;
+  if (varExpression.includes("x")) {
+    let tem = varExpression.replace("x", "");
+    number = Number.parseInt(tem);
+  } else {
+    number = Number.parseInt(varExpression);
+  }
+  return Number.isNaN(number) ? 0 : number;
+};
+
+let clearEquationToX = (leftSide, rightSide) => {
+  return leftSide + "x" + "=" + rightSide;
+};
+
+const equationOne = "3x+6=0";
+const equationTwo = "x+10=35";
+const equationThree = "10x-100=30";
+
+console.log(solveEquationsFirstDegree(equationOne));
+console.log(solveEquationsFirstDegree(equationTwo));
+console.log(solveEquationsFirstDegree(equationThree));
