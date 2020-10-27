@@ -21,3 +21,29 @@ var soyBoolean: boolean = true;
 // arreglo tipado
 var soyArrayNumbers: number[] = [1,1,4,4,7];
 
+// void -> no retorna valor
+// funcion
+function saludoFnc(nombre: string): void {
+    console.log("Hola ", saludo);    
+}
+
+
+// definidos por el usuario
+class Vehiculo {
+    marca: string;
+    motor: number;
+
+    constructor(marca: string, motor: number) {
+        this.marca = marca;
+        this.motor = motor;
+    }
+}
+
+const carrito: Vehiculo = new Vehiculo("Toyota", 2.0);
+
+interface DatosPersonales {
+    nombre: string,
+    fechaNacimiento: string
+}
+
+const datosPersonales: DatosPersonales = {nombre: "Emanuel", fechaNacimiento: Date.now().toString()}
