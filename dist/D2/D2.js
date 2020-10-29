@@ -1,5 +1,5 @@
+"use strict";
 // enum -> enumerado
-// ejercicio -> pitagoras
 // any
 // (1) lenguaje  (built in) --- (2) definidos por usuario
 // clases -> Vehiculo
@@ -11,7 +11,7 @@ var Colores;
     Colores["AMARILLO"] = "#FFFF00";
 })(Colores || (Colores = {}));
 ;
-var mensaje = function (color) {
+let mensaje = (color) => {
     switch (color) {
         case Colores.AMARILLO:
             console.log("El color es ", color);
@@ -31,6 +31,7 @@ var mensaje = function (color) {
     }
 };
 mensaje(Colores.ROJO);
+// ejercicio -> pitagoras
 // POO
 // Clases
 // -> constructores

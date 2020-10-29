@@ -1,6 +1,6 @@
 // tipos de datos
-//              any -> dinamico, 
-// |                                |    
+//              any -> dinamico,
+// |                                |
 // definidos por el lenguaje  ---  Defeinidos por el usuario (dev)
 // [string, number, boolean, [], void,]      [Array, Clases, interfaces, types, enum]
 
@@ -19,31 +19,33 @@ var soyNumber: number = 66;
 var soyBoolean: boolean = true;
 
 // arreglo tipado
-var soyArrayNumbers: number[] = [1,1,4,4,7];
+var soyArrayNumbers: number[] = [1, 1, 4, 4, 7];
 
 // void -> no retorna valor
 // funcion
 function saludoFnc(nombre: string): void {
-    console.log("Hola ", saludo);    
+  console.log("Hola ", saludo);
 }
-
 
 // definidos por el usuario
-class Vehiculo {
-    marca: string;
-    motor: number;
+class VehiculoA {
+  marca: string;
+  motor: number;
 
-    constructor(marca: string, motor: number) {
-        this.marca = marca;
-        this.motor = motor;
-    }
+  constructor(marca: string, motor: number) {
+    this.marca = marca;
+    this.motor = motor;
+  }
 }
 
-const carrito: Vehiculo = new Vehiculo("Toyota", 2.0);
+const carrito: VehiculoA = new VehiculoA("Toyota", 2.0);
 
 interface DatosPersonales {
-    nombre: string,
-    fechaNacimiento: string
+  nombre: string;
+  fechaNacimiento: string;
 }
 
-const datosPersonales: DatosPersonales = {nombre: "Emanuel", fechaNacimiento: Date.now().toString()}
+const datosPersonales: DatosPersonales = {
+  nombre: "Emanuel",
+  fechaNacimiento: Date.now().toString(),
+};

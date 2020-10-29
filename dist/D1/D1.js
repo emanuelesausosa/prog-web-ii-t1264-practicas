@@ -1,3 +1,4 @@
+"use strict";
 // Typescript
 // 1. que es? -> por que?
 // libreria ?? 
@@ -18,6 +19,6 @@
 // 2. instalacion
 // tsc
 // 3. <<hello world>>
-var saludo = "Hola!";
+const saludo = "Hola!";
 console.log(saludo);
 // Typos
