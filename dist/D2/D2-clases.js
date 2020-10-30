@@ -7,7 +7,6 @@ var Colores;
     Colores["VERDE2"] = "#008F39";
     Colores["AMARILLO2"] = "#FFFF00";
 })(Colores || (Colores = {}));
-;
 class Vehiculo {
     // inicializar un objeto
     // instancia un objeto
@@ -46,9 +45,16 @@ class Vehiculo3 {
     // set & get
     set marca(value) {
         // validacion
-        this._marca = value;
+        // hace un calculo,
+        // añadir elemtnos, concatenar
+        this._marca = value + "Cualquier cosas";
     }
-    get marca() { return this._marca; }
+    get marca() {
+        // validacion
+        // hace un calculo,
+        // añadir elemtnos, concatenar
+        return this._marca;
+    }
 }
 var vehiculo3 = new Vehiculo3("Bently", 3.5, Colores.AZUL2);
 vehiculo3.marca = "Suzuki";

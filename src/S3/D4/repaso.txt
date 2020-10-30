@@ -1,0 +1,19 @@
+// tsc
+// 1. tsconfig.json ( tsc --init )
+// 1.1 create src
+// 1.2 create dist
+// build
+// --watch
+// clases
+// extends, herencia
+// clases padre, hijo
+
+
+// -D typescript 
+// -g typescript
+
+// -> 
+
+// Un modelo de datos
+// abstraer clases
+// 
