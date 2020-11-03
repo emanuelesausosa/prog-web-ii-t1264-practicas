@@ -1,0 +1,10 @@
+// Herencia
+// -> ejemplo
+// -> ejercicio (Sakila Database)
+
+// Polimorfismo
+// Abstract clases y Interfaces
+
+// instalacion de angular cli
+
+
