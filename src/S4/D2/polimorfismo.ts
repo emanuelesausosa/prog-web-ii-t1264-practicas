@@ -27,8 +27,8 @@ interface Camara {
 }
 
 interface GPS {
-    miUltimaUbicacionGurdada: any;
-    obtenerUbicacion() : void;
+  miUltimaUbicacionGurdada: any;
+  obtenerUbicacion(): void;
 }
 
 class AnalogPhone extends MobilePhone {
@@ -68,7 +68,7 @@ class SmartPhone extends MobilePhone implements InstalarChip, Camara, GPS {
   }
   camara: any;
   takePhoto(): void {
-      throw new Error("Method not implemented.");
+    throw new Error("Method not implemented.");
   }
   chip: any;
   encender(): void {
